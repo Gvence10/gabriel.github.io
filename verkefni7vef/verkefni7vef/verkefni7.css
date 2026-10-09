@@ -1,0 +1,209 @@
+
+body{
+    background-color: pink;
+    margin: 0px;
+    padding: 0px;
+}
+
+header{
+    font-size: 30px;
+    margin-bottom: 150px;
+}
+
+section{
+    margin-bottom: 100px;
+}
+
+nav{
+    text-align: right;
+    position: sticky;
+    backdrop-filter:blur(8px) contrast(80%) brightness(75%); 
+    font-size: larger;
+    padding: 25px;
+}
+
+.sticky-menu{
+    position: sticky;
+    top: 0px;
+    text-align: center;
+}
+
+main{
+    margin: 150px ;
+}
+
+.backgroundimg {
+  background-image: url('countryside.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  padding: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 5px solid mistyrose;
+}
+
+.backgroundimg h1 {
+
+  color: white;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+
+p{
+    font-size: 20px;
+    color: white;
+    padding: 20px;
+    background-color:lightpink;
+    border-radius: 30px;
+    margin: 10px;
+    border: 3px solid mistyrose;
+}
+
+h3{
+    font-size: 50px;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    background-color:lightpink;
+    border: 3px solid mistyrose;
+    border-radius: 30px;
+    text-align: center;
+}
+
+h2{
+    font-size: 30px;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    background-color:lightpink;
+    border: 3px solid mistyrose;
+    border-radius: 30px;
+}
+
+.verycoolimg{
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+    margin-top: 10px;
+    border: 3px solid mistyrose;
+    display: none ;
+}
+
+ul{
+    font-size: 20px;
+    color: white;
+    padding: 20px;
+    background-color:lightpink;
+    border-radius: 30px;
+    margin: 10px;
+    border: 3px solid mistyrose;
+}
+
+footer{
+    background-color: thistle;
+}
+
+.footertexts{
+    text-align: center;
+}
+
+a{
+    color: antiquewhite;
+    text-decoration: none;
+    padding: 10px;
+}
+
+@media (min-width: 600px) {
+
+    .verycoolimg {
+        display: block;
+    }
+    
+}
+
+@media (min-width: 600px) {
+    
+    .dalkar1{
+    display: grid;
+    grid-template-columns: 1fr;
+    }
+
+    .dalkar2{
+        display: grid;
+        grid-template-columns: 1fr;
+
+    }
+
+    .images{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: 10px;
+    }
+        
+}
+
+@media (min-width: 768px) {
+
+    .dalkar1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    }
+
+    .dalkar2{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+
+    .images{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 10px;
+    }
+
+
+}
+
+@media (min-width: 960px) {
+
+    .dalkar1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    }
+
+    .dalkar2{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+
+    .images{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 10px;
+    }
+
+    .footer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

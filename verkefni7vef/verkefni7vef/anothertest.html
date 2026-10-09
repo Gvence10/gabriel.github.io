@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discover Japan</title>
+    <style>
+      :root {
+        --bg: #f7f3ee;
+        --card: #fffaf5;
+        --ink: #1e1e1e;
+        --muted: #5d5955;
+        --red: #c0392b;
+        --crimson: #b22234;
+        --rose: #e7b7a0;
+        --gold: #d4a64f;
+        --shadow: rgba(0, 0, 0, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #fefaf6 0%, #f7f0e8 100%);
+        color: var(--ink);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 250, 245, 0.88);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(30, 30, 30, 0.08);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 72px;
+      }
+
+      .brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand span {
+        color: var(--red);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      .nav-links a:hover {
+        color: var(--red);
+      }
+
+      .hero {
+        background:
+          linear-gradient(rgba(15, 15, 15, 0.45), rgba(15, 15, 15, 0.45)),
+          url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        min-height: 650px;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 40px;
+        padding: 80px 0;
+      }
+
+      .hero-copy {
+        color: white;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        line-height: 1.05;
+        margin: 0 0 16px;
+      }
+
+      .hero-copy p {
+        font-size: 1.1rem;
+        max-width: 620px;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 18px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: transform 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: var(--red);
+        color: white;
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: white;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        border-radius: 26px;
+        padding: 24px;
+        color: white;
+      }
+
+      .hero-card h2 {
+        margin: 0 0 14px;
+        font-size: 1.5rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .stat {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.7rem;
+        margin-bottom: 6px;
+      }
+
+      main {
+        padding: 72px 0 90px;
+      }
+
+      section {
+        margin-bottom: 88px;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 500px;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 26px;
+      }
+
+      .card {
+        background: var(--card);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 14px 30px var(--shadow);
+      }
+
+      .card img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 22px 20px 24px;
+      }
+
+      .card-tag {
+        display: inline-block;
+        background: #fce3d7;
+        color: #7d3b27;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .card h3 {
+        margin: 14px 0 10px;
+        font-size: 1.5rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: center;
+        background: #fffaf5;
+        border-radius: 30px;
+        padding: 28px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+      }
+
+      .feature img {
+        border-radius: 24px;
+        height: 520px;
+        object-fit: cover;
+      }
+
+      .feature ul {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0;
+      }
+
+      .feature li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 18px;
+        color: var(--muted);
+      }
+
+      .check {
+        width: 26px;
+        height: 26px;
+        background: var(--red);
+        color: white;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .food-list {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .food-item {
+        background: linear-gradient(180deg, #fffaf5 0%, #fef3ea 100%);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        border-radius: 22px;
+        padding: 22px;
+      }
+
+      .food-item .emoji {
+        font-size: 2.7rem;
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .food-item h3 {
+        margin: 0 0 8px;
+        font-size: 1.3rem;
+      }
+
+      .food-item p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .cta {
+        background: linear-gradient(135deg, #b22234 0%, #d97852 100%);
+        color: white;
+        border-radius: 30px;
+        padding: 46px 36px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .cta h2 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+
+      .cta p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      footer {
+        background: #171717;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 28px 0 34px;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero-inner,
+        .feature,
+        .grid-3,
+        .food-list {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head,
+        .cta,
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          min-height: 560px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="brand"><span>JP</span> Japan</div>
+          <ul class="nav-links">
+            <li><a href="#culture">Culture</a></li>
+            <li><a href="#landmarks">Landmarks</a></li>
+            <li><a href="#food">Cuisine</a></li>
+            <li><a href="#travel">Travel</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">Welcome to Japan</div>
+          <h1>Where tradition meets modern wonder.</h1>
+          <p>
+            Discover serene temples, neon city nights, world-class food, and a culture
+            shaped by harmony, respect, and timeless beauty.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#landmarks">Explore Japan</a>
+            <a class="btn btn-secondary" href="#culture">Learn More</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h2>Japan at a glance</h2>
+          <div class="stats">
+            <div class="stat">
+              <strong>6,852</strong>
+              islands
+            </div>
+            <div class="stat">
+              <strong>47</strong>
+              prefectures
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              major cities
+            </div>
+            <div class="stat">
+              <strong>∞</strong>
+              unforgettable moments
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <div class="container">
+        <section id="culture">
+          <div class="section-head">
+            <h2>Culture & spirit</h2>
+            <p>Japan blends deep traditions with everyday elegance, from tea ceremonies to city rhythms.</p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=900&q=80" alt="Temple in Japan" />
+              <div class="card-body">
+                <span class="card-tag">Tradition</span>
+                <h3>Ancient heritage</h3>
+                <p>Temples, shrines, and seasonal rituals keep Japan connected to its rich historical roots.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?auto=format&fit=crop&w=900&q=80" alt="Japanese street scene" />
+              <div class="card-body">
+                <span class="card-tag">Daily life</span>
+                <h3>Focused living</h3>
+                <p>Order, respect, and attention to detail shape daily life across the country.</p>
+              </div>
+            </article>
+
+            <article class="card">
+              <img src="https://images.unsplash.com/photo-1526481280695-3c4691f1f7d6?auto=format&fit=crop&w=900&q=80" alt="Cherry blossoms in Japan" />
+              <div class="card-body">
+                <span class="card-tag">Seasons</span>
+                <h3>Nature in bloom</h3>
+                <p>Japan celebrates each season with stunning landscapes, blossoms, and festivals.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="landmarks">
+          <div class="section-head">
+            <h2>Iconic landmarks</h2>
+            <p>From ancient cities to towering skylines, Japan offers unforgettable views at every turn.</p>
+          </div>
+
+          <div class="feature">
+            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1200&q=80" alt="Tokyo skyline" />
+            <div>
+              <span class="card-tag">Tokyo</span>
+              <h3>Tokyo: energy and elegance</h3>
+              <p>
+                Tokyo unites futuristic technology, buzzing neighborhoods, and quiet pockets of calm.
+                Explore shopping streets, museums, and rooftop views that spark wonder.
+              </p>
+              <ul>
+                <li><span class="check">✓</span> Shibuya crossing and lively nightlife</li>
+                <li><span class="check">✓</span> Tokyo Tower and panoramic city views</li>
+                <li><span class="check">✓</span> Meiji Shrine surrounded by forest calm</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="food">
+          <div class="section-head">
+            <h2>Japanese cuisine</h2>
+            <p>Food in Japan is as beautiful as it is flavorful, with fresh ingredients and thoughtful preparation.</p>
+          </div>
+
+          <div class="food-list">
+            <article class="food-item">
+              <span class="emoji">🍣</span>
+              <h3>Sushi</h3>
+              <p>Fresh fish, delicate rice, and precise craftsmanship in every bite.</p>
+            </article>
+            <article class="food-item">
+              <span class="emoji">🍜</span>
+              <h3>Ramen</h3>
+              <p>Rich broths, chewy noodles, and comforting toppings that warm the soul.</p>
+            </article>
+            <article class="food-item">
+              <span class="emoji">🥟</span>
+              <h3>Gyoza</h3>
+              <p>Savory dumplings filled with juicy ingredients and pan-fried to perfection.</p>
+            </article>
+            <article class="food-item">
+              <span class="emoji">🍡</span>
+              <h3>Dango</h3>
+              <p>Sweet rice dumplings enjoyed during festivals and cheerful seasonal moments.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="travel">
+          <div class="cta">
+            <div>
+              <h2>Plan your Japanese journey</h2>
+              <p>Experience tranquil temples, high-energy neighborhoods, and unforgettable cuisine.</p>
+            </div>
+            <a class="btn btn-secondary" href="#top">Start exploring</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2025 Discover Japan</div>
+        <div>Land of culture, beauty, and unforgettable experiences</div>
+      </div>
+    </footer>
+  </body>
+</html>
